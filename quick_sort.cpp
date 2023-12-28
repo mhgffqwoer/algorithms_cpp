@@ -1,11 +1,6 @@
+// by mhgffqwoer
 #include <iostream>
 #include <stack>
-
-void swap(int *a, int *b) {
-  int temp = *a;
-  *a = *b;
-  *b = temp;
-}
 
 // partition into two subset
 int partition(int *arr, const int &left, const int &right) {
@@ -16,17 +11,17 @@ int partition(int *arr, const int &left, const int &right) {
     while (arr[i] < mid) ++i;
     while (arr[j] > mid) --j;
     if (i >= j) break;
-    swap(&arr[i++], &arr[j--]);
+    std::swap(arr[i++], arr[j--]);
   }
   return j;
 }
 
 // recursive calls
-void QuickSort(int *arr, const int &left, const int &right) {
+void QuickSortRecursive(int *arr, const int &left, const int &right) {
   if (left < right) {
     int p = partition(arr, left, right);
-    QuickSort(arr, left, p);
-    QuickSort(arr, p + 1, right);
+    QuickSortRecursive(arr, left, p);
+    QuickSortRecursive(arr, p + 1, right);
   }
 }
 

@@ -1,9 +1,5 @@
+// by mhgffqwoer
 #include <iostream>
-
-int min(const int& a, const int& b) {
-  if (a < b) return a;
-  return b;
-}
 
 // func merge memory O(n)
 void mergeN(int* arr, const int& left, const int& mid, const int& right) {
@@ -49,7 +45,7 @@ void mergeSortRecursive(int* arr, const int& left, const int& right) {
 void mergeSortIterative(int* arr, const int& size) {
   for (int i = 1; i < size; i *= 2) {
     for (int j = 0; j < size - i; j += 2 * i) {
-      mergeN(arr, j, j + i, min(j + 2 * i, size));
+      mergeN(arr, j, j + i, std::min(j + 2 * i, size));
     }
   }
 }
@@ -59,7 +55,7 @@ int main(void) {
   int size = sizeof(arr) / sizeof(arr[0]);
 
   mergeSortIterative(arr, size);
-  //mergeSortRecursive(arr, 0, size);
+  // mergeSortRecursive(arr, 0, size);
 
   for (int i = 0; i < size; ++i) {
     std::cout << arr[i] << " ";
